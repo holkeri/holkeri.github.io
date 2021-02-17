@@ -3,6 +3,7 @@ layout: post
 title: "Crime and Punishment by Fyodor Dostoevsky"
 date: 2021-02-16 21:00 +0200
 categories: books
+cover_img: "/assets/img/crime-and-punishment.png"
 ---
 
 _Original title: "Преступление и наказание". First published in 1866. I read the Finnish translation "Rikos ja rangaistus" by J.A. Hollo from 1922._
