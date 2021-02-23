@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "Crime and Punishment by Fyodor Dostoevsky"
-date: 2021-02-16 21:00 +0200
+date: 2021-02-16
 categories: books
 cover_img: "/assets/img/crime-and-punishment.png"
 ---
-
-_Original title: "Преступление и наказание". First published in 1866. I read the Finnish translation "Rikos ja rangaistus" by J.A. Hollo from 1922._
 
 Rodion Romanovich Raskolnikov, a poor student living in St Petersburg, commits a crime. The motive is not immediately evident to the reader and also the offender is hesitant about it. What begins as a thought experiment progresses to preparations supposedly without intention and soon somehow starts to feel inevitable. At a point, Raskolnikov notices it's too late to turn back.
 
@@ -23,3 +21,7 @@ The thought of mere existence without purpose is unsettling. Rejecting religion,
 Raskolnikov still believes his theory is no worse than others—it just hasn't gotten vindicated by success. He recognizes his criminality but thinks his conscience is clean. Yet that conviction is in conflict with some of his innermost feelings: he'd welcome the pains of guilt and remorse for the victims to fill the void of meaninglessness and keeps asking why he can't overcome his desire to live.
 
 >"In misery he asked himself this question, and could not understand that, at the very time he had been standing looking into the river, he had perhaps been dimly conscious of the fundamental falsity in himself and his convictions. He didn’t understand that that consciousness might be the promise of a future crisis, of a new view of life and of his future resurrection."
+
+---
+
+_Crime and Punishment by Fyodor Dostoevsky. Original title: "Преступление и наказание". First published in 1866. I read the Finnish translation "Rikos ja rangaistus" by J.A. Hollo from 1922._

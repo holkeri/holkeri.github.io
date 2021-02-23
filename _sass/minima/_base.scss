@@ -8,6 +8,12 @@ dl, dd, ol, ul, figure {
   padding: 0;
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid $grey-color-light;
+  margin-bottom: $spacing-unit / 2;
+  margin-top: $spacing-unit;
+}
 
 
 /**
