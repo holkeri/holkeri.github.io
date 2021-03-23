@@ -36,4 +36,4 @@ Finally, Tillich calls for transcending theism. God as an all-powerful and all-k
 
 ---
 
-_Courage to Be by Paul Tillich. First published in 1952._
+_Courage to Be (The Terry Lectures Series) by Paul Tillich. First published in 1952._
