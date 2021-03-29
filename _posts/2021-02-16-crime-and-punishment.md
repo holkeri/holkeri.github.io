@@ -14,13 +14,13 @@ The narrative the protagonist uses to rationalize the deed to himself is based o
 
 But then, feeling disgusted by what he has done, the criminal doesn't follow through with the rest of his plan. Nevertheless, the act can't be undone anymore. It's a lot to handle emotionally and the delirium, paranoia, and volatility make it harder to hide the secret. Raskolnikov takes his inability to proceed with the undertaking as a demonstration of not being an extraordinary person after all. His beliefs have left him with wounded dignity and existential crisis.
 
->"What had he to live for? What had he to look forward to? Why should he strive? To live in order to exist? Why, he had been ready a thousand times before to give up existence for the sake of an idea, for a hope, even for a fancy. Mere existence had always been too little for him; he had always wanted more. Perhaps it was just because of the strength of his desires that he had thought himself a man to whom more was permissible than to others."
+>What had he to live for? What had he to look forward to? Why should he strive? To live in order to exist? Why, he had been ready a thousand times before to give up existence for the sake of an idea, for a hope, even for a fancy. Mere existence had always been too little for him; he had always wanted more. Perhaps it was just because of the strength of his desires that he had thought himself a man to whom more was permissible than to others.
 
 The thought of mere existence without purpose is unsettling. Rejecting religion, where does Raskolnikov find meaning? After dismissing God and metaphysical explanations, one might have conflicting beliefs and be painfully aware or ruinously unaware of them. Ideologies are not always adopted consciously and not all of them are that different from religions. After all, Raskolnikov's desperate desire for meaning leads to radicalism as detrimental as religious fundamentalism.
 
 Raskolnikov still believes his theory is no worse than others—it just hasn't gotten vindicated by success. He recognizes his criminality but thinks his conscience is clean. Yet that conviction conflicts with some of his innermost feelings: he'd welcome the pains of guilt and remorse for the victims to fill the void of meaninglessness and keeps asking why he can't overcome his desire to live.
 
->"In misery he asked himself this question, and could not understand that, at the very time he had been standing looking into the river, he had perhaps been dimly conscious of the fundamental falsity in himself and his convictions. He didn’t understand that that consciousness might be the promise of a future crisis, of a new view of life and of his future resurrection."
+>In misery he asked himself this question, and could not understand that, at the very time he had been standing looking into the river, he had perhaps been dimly conscious of the fundamental falsity in himself and his convictions. He didn’t understand that that consciousness might be the promise of a future crisis, of a new view of life and of his future resurrection.
 
 ---
 
