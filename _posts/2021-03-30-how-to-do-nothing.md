@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Do Nothing by Jenny Odell"
-date: 2021-03-23
+date: 2021-03-30
 categories: books
 cover_img: "/assets/img/how-to-do-nothing.png"
 ---
