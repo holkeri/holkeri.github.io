@@ -24,4 +24,4 @@ Raskolnikov still believes his theory is no worse than others—it just hasn't g
 
 ---
 
-_Crime and Punishment by Fyodor Dostoevsky. Original title: "Преступление и наказание". First published in 1866. I read the Finnish translation "Rikos ja rangaistus" by J.A. Hollo from 1922._
+_Crime and Punishment by Fyodor Dostoevsky. Original title: "Преступление и наказание". First published in 1866. I read the Finnish translation "Rikos ja rangaistus" by J.A. Hollo._
