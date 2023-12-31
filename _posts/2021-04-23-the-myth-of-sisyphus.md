@@ -36,4 +36,4 @@ Camus' illustrations of characters embracing the absurd are expending themselves
 
 ---
 
-_The Myth of Sisyphus by Albert Camus. Original title: "Le mythe de Sisyphe". First published in 1942. I read the English translation by Justin O'Brien._
+_The Myth of Sisyphus by Albert Camus. Original title: "Le mythe de Sisyphe". First published in 1942. I read the 1955 English translation by Justin O'Brien._
