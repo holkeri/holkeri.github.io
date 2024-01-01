@@ -16,7 +16,7 @@ What do the dinner guests have in common? Their behavior assumes humans are conf
 
 The Bore could identify the emotions behind the seemingly impersonal facts. The Over-Friendly could exhibit a deeper understanding of people and what they're actually proud of. The Frank could acknowledge the subjectivity, fallibility and consequences of candid judgments. The Mean could find other outlets for suffering than being nasty to others. The Shy could recognize the common ground in the human experience behind our differences. The Bragger could demonstrate personal vulnerability to make others feel at ease with their own imperfections.
 
-To be more compassionate at the party, it might help to appreciate "The Weakness of Strength" theory. It states that our characteristic faults are simply the flip sides of our virtues. Someone's wonderfully unhurried and spontaneous presence might be inextricably linked to their difficulty in making plans and being on time. The next time you get frustrated with people, remember the corresponding qualities you appreciate in them. Or if you're making new acquaintances, their strengths are waiting to be found.
+To be more compassionate at the party, it might help to appreciate "The Weakness of Strength" theory. It states that our characteristic faults are simply the flip sides of our virtues. Someone's wonderfully unhurried and spontaneous presence might be inextricably linked to their difficulty in making plans and being on time. The next time you get frustrated with people, remember the corresponding qualities you appreciate in them. Or, if you're making new acquaintances, find their strengths.
 
 ---
 
