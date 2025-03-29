@@ -21,14 +21,28 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+        {%- if post.cover_img -%}
+          <img class="cover-img" src="{{ post.cover_img }}">
         {%- endif -%}
+        {%- if post.audio -%}
+          {%- include audio.html src=post.audio -%}
+        {%- endif -%}
+        {%- if site.show_excerpts -%}
+          <p>{{ post.excerpt }}</p>
+          {% if post.excerpt != post.content -%}
+          <a class="continue-reading" href="{{ post.url | relative_url }}">
+            Continue reading →
+          </a>
+          {%- endif -%}
+        {%- endif -%}
+        {% if forloop.last != true %}
+          <p class="list-separator">*</p>
+        {% endif %}
       </li>
       {%- endfor -%}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    <p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">subscribe via RSS</a></p>
   {%- endif -%}
 
 </div>

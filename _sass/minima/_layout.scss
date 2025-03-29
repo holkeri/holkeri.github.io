@@ -204,8 +204,22 @@
 .post-link {
   display: block;
   @include relative-font-size(1.5);
+  color: $text-color;
 }
 
+// .continue-reading {
+//   font-size: $small-font-size;
+//   color: $grey-color;
+// }
+
+
+.list-separator {
+  text-align: center;
+  @include relative-font-size(1.5);
+  margin-top: $spacing-unit + $base-font-size * 0.4;
+  margin-bottom: $spacing-unit;
+  user-select: none;
+}
 
 
 /**
