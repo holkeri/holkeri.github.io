@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Courage to Be by Paul Tillich"
+title: "Book review: Courage to Be by Paul Tillich"
 date: 2021-03-14
 categories: books
 cover_img: "/assets/img/courage-to-be.png"
