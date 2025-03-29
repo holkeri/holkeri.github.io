@@ -1,7 +1,8 @@
+Available at [holkeri.github.io](https://holkeri.github.io/)
+
 # Installing dependencies
 
 ```
-gem install bundler jekyll
 bundle install
 ```
 
