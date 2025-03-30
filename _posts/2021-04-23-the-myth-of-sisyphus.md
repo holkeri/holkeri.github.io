@@ -3,7 +3,7 @@ layout: post
 title: "Book review: The Myth of Sisyphus by Albert Camus"
 date: 2021-04-23
 categories: books
-cover_img: "/assets/img/the-myth-of-sisyphus.png"
+small_cover: "/assets/img/the-myth-of-sisyphus.png"
 ---
 
 >The gods had condemned Sisyphus to ceaselessly rolling a rock to the top of a mountain, whence the stone would fall back of its own weight. They had thought with some reason that there is no more dreadful punishment than futile and hopeless labor.

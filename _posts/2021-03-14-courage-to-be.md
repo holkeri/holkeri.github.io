@@ -3,7 +3,7 @@ layout: post
 title: "Book review: Courage to Be by Paul Tillich"
 date: 2021-03-14
 categories: books
-cover_img: "/assets/img/courage-to-be.png"
+small_cover: "/assets/img/courage-to-be.png"
 ---
 
 In Plato's dialogue _Laches_, Socrates is trying to define courage with military general Nikias, who suggests it is the knowledge of "what is to be dreaded and what dared". While not able to provide a better alternative himself, Socrates points out that acting truly courageously would then require a universal understanding of good and evil. The philosopher finds the explanation inadequate because it would make courage amount to all virtue while he maintains it should be just a part of virtue.
