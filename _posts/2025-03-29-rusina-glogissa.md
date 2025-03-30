@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rusina Glögissä"
+title: "Rusina glögissä"
 date: 2025-03-29
 categories: music
 audio: "/assets/audio/rusina-glogissa.m4a"
