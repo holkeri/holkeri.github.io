@@ -2,7 +2,8 @@
 layout: post
 title: "Book review: On Being Nice by The School of Life"
 date: 2023-12-31
-categories: books
+tags:
+  - "book review"
 small_cover: "/assets/img/on-being-nice.png"
 ---
 

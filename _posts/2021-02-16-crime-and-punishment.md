@@ -2,7 +2,8 @@
 layout: post
 title: "Book review: Crime and Punishment by Fyodor Dostoevsky"
 date: 2021-02-16
-categories: books
+tags:
+  - "book review"
 small_cover: "/assets/img/crime-and-punishment.png"
 ---
 

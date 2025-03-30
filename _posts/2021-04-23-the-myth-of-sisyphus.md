@@ -2,7 +2,8 @@
 layout: post
 title: "Book review: The Myth of Sisyphus by Albert Camus"
 date: 2021-04-23
-categories: books
+tags:
+  - "book review"
 small_cover: "/assets/img/the-myth-of-sisyphus.png"
 ---
 

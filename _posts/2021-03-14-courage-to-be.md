@@ -2,7 +2,8 @@
 layout: post
 title: "Book review: Courage to Be by Paul Tillich"
 date: 2021-03-14
-categories: books
+tags:
+  - "book review"
 small_cover: "/assets/img/courage-to-be.png"
 ---
 

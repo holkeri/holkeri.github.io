@@ -2,7 +2,8 @@
 layout: post
 title: "Book review: How to Do Nothing by Jenny Odell"
 date: 2021-03-30
-categories: books
+tags:
+  - "book review"
 small_cover: "/assets/img/how-to-do-nothing.png"
 ---
 
