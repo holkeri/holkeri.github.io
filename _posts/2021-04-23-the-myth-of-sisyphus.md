@@ -10,7 +10,7 @@ img_size: "small"
 
 >The gods had condemned Sisyphus to ceaselessly rolling a rock to the top of a mountain, whence the stone would fall back of its own weight. They had thought with some reason that there is no more dreadful punishment than futile and hopeless labor.
 
-According to Greek mythology, Sisyphus gets into this situation for his disrespect of gods (stole their secrets), hatred of death (put Death into chains), and love for life (overstayed his temporary resurrection). Maybe so, but those same qualities make him an absurd hero for Camus. He's living the life he has, not bound by illusions of something more. The lucid hopelessness constitutes Sisyphus' torture, yet he takes on his fate and thereby turns it into victory. The rock is now his thing.
+According to Greek mythology, Sisyphus gets into this situation for his disrespect of gods (stole their secrets), hatred of death (put Death into chains), and love for life (overstayed his temporary resurrection). Maybe so, but those same qualities make him an absurd hero for Albert Camus. He's living the life he has, not bound by illusions of something more. The lucid hopelessness constitutes Sisyphus' torture, yet he takes on his fate and thereby turns it into victory. The rock is now his thing.
 
 Is Sisyphus' condition much worse than ours? After all, what do our efforts and accomplishments ultimately amount to? Sisyphus' fate is made tragic only by him being conscious of it. But are our lives any less absurd?
 

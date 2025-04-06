@@ -7,4 +7,4 @@ image: "/assets/img/creamy-dreamy-green.jpeg"
 img_size: "big"
 ---
 
-Acrylic pour on canvas.
+_Acrylic pour on canvas._
