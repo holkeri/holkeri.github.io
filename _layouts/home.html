@@ -22,7 +22,7 @@ layout: default
           </a>
         </h3>
         {%- if post.image -%}
-          <img class="{{ post.img_class }}" src="{{ post.image }}">
+          <img class="cover {{ post.img_size }}" src="{{ post.image }}">
         {%- endif -%}
         {%- if post.audio -%}
           {%- include audio.html src=post.audio -%}

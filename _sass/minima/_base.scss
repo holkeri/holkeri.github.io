@@ -60,18 +60,31 @@ main {
 /**
  * Images
  */
-img {
-  max-width: 100%;
-  vertical-align: middle;
-}
 
-.small-cover {
-  height: 200px;
-  width: 200px;
+img.cover {
   object-fit: contain;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: $spacing-unit / 2;
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+img.small {
+  height: 200px;
+  width: 200px;
+}
+
+/**
+ * Audio player
+ */
+
+audio {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $spacing-unit / 2;
 }
 
 /**

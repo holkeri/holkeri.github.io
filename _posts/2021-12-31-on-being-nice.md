@@ -5,7 +5,7 @@ date: 2023-12-31
 tags:
   - "book review"
 image: "/assets/img/on-being-nice.png"
-img_class: "small-cover"
+img_size: "small"
 ---
 
 You meet people at a dinner party. The Bore goes on a lengthy rant about the quality of public health care. The Over-Friendly laughs at every joke and endorses every opinion. The Frank says they make tastier pasta in Tuscany. The Mean makes a joke about the shape of your nose. The Shy doesn't talk to strangers. The Bragger boasts of having recent success in real estate investments.

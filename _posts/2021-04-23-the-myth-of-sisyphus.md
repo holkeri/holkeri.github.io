@@ -5,7 +5,7 @@ date: 2021-04-23
 tags:
   - "book review"
 image: "/assets/img/the-myth-of-sisyphus.png"
-img_class: "small-cover"
+img_size: "small"
 ---
 
 >The gods had condemned Sisyphus to ceaselessly rolling a rock to the top of a mountain, whence the stone would fall back of its own weight. They had thought with some reason that there is no more dreadful punishment than futile and hopeless labor.
