@@ -4,7 +4,8 @@ title: "Book review: How to Do Nothing by Jenny Odell"
 date: 2021-03-30
 tags:
   - "book review"
-small_cover: "/assets/img/how-to-do-nothing.png"
+image: "/assets/img/how-to-do-nothing.png"
+img_class: "small-cover"
 ---
 
 Why do nothing? We have just one life so why not optimize our productivity, maximize our social networks online, and allow algorithms to choose the most engaging content for us? Well, perhaps there's something not captured by the capitalist notion of productivity. Maybe digital encounters between branded personalities are not the most fulfilling ones. And it could be that what makes content engaging is the anxiety, envy, and agitation it arouses.

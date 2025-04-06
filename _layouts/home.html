@@ -21,11 +21,8 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
-        {%- if post.small_cover -%}
-          <img class="small-cover" src="{{ post.small_cover }}">
-        {%- endif -%}
-        {%- if post.big_cover -%}
-          <a href="{{ post.big_cover }}" target="_blank"><img src="{{ post.big_cover }}"></a>
+        {%- if post.image -%}
+          <img class="{{ post.img_class }}" src="{{ post.image }}">
         {%- endif -%}
         {%- if post.audio -%}
           {%- include audio.html src=post.audio -%}

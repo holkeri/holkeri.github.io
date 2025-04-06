@@ -4,7 +4,8 @@ title: "Book review: Crime and Punishment by Fyodor Dostoevsky"
 date: 2021-02-16
 tags:
   - "book review"
-small_cover: "/assets/img/crime-and-punishment.png"
+image: "/assets/img/crime-and-punishment.png"
+img_class: "small-cover"
 ---
 
 Rodion Romanovich Raskolnikov, a poor student living in St Petersburg, commits a crime. The motive is not immediately evident to the reader and also the offender is hesitant about it. What begins as a thought experiment progresses to preparations supposedly without intention and soon somehow starts to feel inevitable. At a point, Raskolnikov notices it's too late to turn back.
