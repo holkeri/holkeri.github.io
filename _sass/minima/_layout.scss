@@ -216,9 +216,9 @@
 
 .list-separator {
   text-align: center;
-  @include relative-font-size(1.5);
-  margin-top: $spacing-unit + $base-font-size * 0.4;
-  margin-bottom: $spacing-unit;
+  @include relative-font-size(1.75);
+  margin-top: 1.2 * $spacing-unit + $base-font-size * 0.4;
+  margin-bottom: 1.2 * $spacing-unit;
   user-select: none;
 }
 
