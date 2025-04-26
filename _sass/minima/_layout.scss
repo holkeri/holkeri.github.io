@@ -208,18 +208,8 @@
   line-height: 1.25;
 }
 
-// .continue-reading {
-//   font-size: $small-font-size;
-//   color: $grey-color;
-// }
-
-
-.list-separator {
-  text-align: center;
-  @include relative-font-size(1.75);
-  margin-top: 1.2 * $spacing-unit + $base-font-size * 0.4;
-  margin-bottom: 1.2 * $spacing-unit;
-  user-select: none;
+.post-separator {
+  margin: 1.5 * $spacing-unit 0;
 }
 
 
@@ -265,5 +255,13 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
+  }
+
+  .dinkus {
+    text-align: center;
+    @include relative-font-size(1.375);
+    margin-top: 1.5 * $base-font-size;
+    margin-bottom: $base-font-size;
+    user-select: none;
   }
 }
