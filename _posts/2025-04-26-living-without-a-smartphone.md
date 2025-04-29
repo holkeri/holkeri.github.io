@@ -33,13 +33,13 @@ I started using a small notepad for to-dos, grocery lists, and various details. 
 
 A smartphone sure makes all these tasks more convenient, but the side effects are less visible and direct. That doesn’t mean they aren’t substantial. Besides behavior, technology influences also our personalities and perception of reality. It’s a part of us. Over the years, I had become a cyborg: part human, part iPhone — and I wanted to reverse some of that.
 
-Marshall McLuhan, a Canadian philosopher, argued that in addition to extending our capabilities, all tools also “amputate” the associated counterparts of our experience. He writes in his 1964 book Understanding Media: The Extensions of Man:
+Marshall McLuhan, a Canadian philosopher, argued that in addition to extending our capabilities, all tools also “amputate” the associated counterparts of our experience. He writes in his 1964 book _Understanding Media: The Extensions of Man_:
 
 >Any invention or technology is an extension or self-amputation of our physical bodies, and such extension also demands new ratios or new equilibriums among the other organs and extensions of the body. ... To behold, use or perceive any extension of ourselves in technological form is necessarily to embrace it. To listen to radio or to read the primed page is to accept these extensions of ourselves into our personal system and to undergo the “closure” or displacement of perception that follows automatically.
 
 We tend to get excited about technology's extensions while taking little notice of its amputations. Without us asking for it, smartphones have amputated experiences like observing our surroundings, being immersed in thoughts, looking at the clouds, getting lost, asking strangers for help, and enduring awkward silences.
 
-Maybe you can mitigate the undesired consequences. Perhaps you don’t care too much about those, or you conclude the upsides weigh more. That’s fine. It’s just that at least I never considered or could even foresee these effects before I got a smartphone. I made a purchase decision, but it was mostly about things like price and convenience. When upgrading to a new phone, of course I wanted the most capable one every time.
+Maybe you can mitigate the undesired consequences. Perhaps you don’t care too much about those, or you conclude the upsides weigh more. That’s fine. It’s just that at least I never considered or could even foresee these effects before I got a smartphone. I made a purchase decision, but it was mostly about things like price and convenience. When upgrading, of course I wanted the most capable one every time.
 
 {% include dinkus.html %}
 
@@ -59,8 +59,8 @@ My change has caused various inconveniences. But has it compromised the things I
 
 Spontaneity was my other concern. I have to make more preparations now that I can’t just leave home and _then_ check where I am going and how to get there. It’s certainly harder to arrange things on the fly without a smartphone, but sometimes it’s a relief. I just try to have a bit more slack in my plans and enjoy the moment. When I don’t have all the information available at all times, it’s easier to settle for something next to me instead of trying to find the perfect place or activity. And I can always call and ask someone.
 
-Naturally, changing my phone didn’t fix all my problems. I now use my laptop more, sometimes aimlessly browsing the web or watching YouTube videos. The good thing is that I can leave my computer at home and go for a walk or to the library while staying reachable. Sometimes, I still take out my phone and play Snake. It’s not a great game, but I’m getting quite good at it.
+Naturally, switching phones didn’t fix all my problems. I now use my laptop more, sometimes aimlessly browsing the web or watching YouTube videos. The good thing is that I can leave my computer at home and go for a walk or to the library while staying reachable. Sometimes, I still take out my phone and play Snake. It’s not a great game, but I’m getting quite good at it.
 
-Would I recommend everyone to shelve their smartphones? [Jenny Odell, an American writer, points out]({% link _posts/2021-03-30-how-to-do-nothing.md %}) that any kind of refusal (from the attention economy or otherwise) requires a degree of latitude not everyone might have. Maybe your livelihood depends on it, or the accessibility features are essential to you. If you don’t see any fundamental obstacles, why not give it a go? Just don't feel bad if it doesn’t work for you.
+Would I recommend everyone to shelve their smartphones? [Jenny Odell, an American writer, points out]({% link _posts/2021-03-30-how-to-do-nothing.md %}) that any kind of refusal (from the attention economy or otherwise) requires a degree of latitude not everyone might have. Maybe your livelihood depends on it, or the accessibility features are essential to you. But if you don’t see any fundamental obstacles, why not give it a go? Just don't feel bad if it doesn’t work for you.
 
 Will I stick to this for the rest of my life? I don’t know. I like to do experiments and see where they lead. I suppose there’s no need for me to commit to anything forever. But for now, frankly, I have no desire to go back.
