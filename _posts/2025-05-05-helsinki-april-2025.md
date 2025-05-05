@@ -8,11 +8,11 @@ image: "/assets/img/sornainen-prison.jpeg"
 ![Sörnäinen prison](/assets/img/sornainen-prison.jpeg)
 Sörnäinen prison
 
-![Töölö Bay](/assets/img/toolo-bay.jpeg)
-Töölö Bay
+![Töölö bay](/assets/img/toolo-bay.jpeg)
+Töölö bay
 
-![Hanasaari Power Plant](/assets/img/hanasaari-power-plant.jpeg)
-Hanasaari Power Plant
+![Hanasaari power plant](/assets/img/hanasaari-power-plant.jpeg)
+Hanasaari power plant
 
 ![Mustikkamaa](/assets/img/mustikkamaa.jpeg)
 Mustikkamaa
