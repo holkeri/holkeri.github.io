@@ -4,7 +4,6 @@ title: "Creamy dreamy green"
 date: 2023-07-01
 tags: painting
 image: "/assets/img/creamy-dreamy-green.jpeg"
-img_size: "big"
 ---
-
+![Creamy dreamy green](/assets/img/creamy-dreamy-green.jpeg)
 _Acrylic pour on canvas._

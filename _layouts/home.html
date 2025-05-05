@@ -21,7 +21,7 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
-        {%- if post.image -%}
+        {%- if post.image and post.img_size -%}
           <img class="cover {{ post.img_size }}" src="{{ post.image }}">
         {%- endif -%}
         {%- if post.audio -%}
@@ -31,7 +31,7 @@ layout: default
           <p>{{ post.excerpt }}</p>
           {% if post.excerpt != post.content -%}
           <a href="{{ post.url | relative_url }}">
-            Continue reading →
+            View more →
           </a>
           {%- endif -%}
         {%- endif -%}

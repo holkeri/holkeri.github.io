@@ -61,6 +61,11 @@ main {
  * Images
  */
 
+ .post-content img, .post-list img {
+  max-width: 100%;
+  border-radius: 4px;
+ }
+
 img.cover {
   object-fit: contain;
   display: block;

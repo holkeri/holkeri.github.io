@@ -14,7 +14,7 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}
     </p>
-      {%- if page.image -%}
+      {%- if page.image and page.img_size -%}
         <img class="cover {{ page.img_size }}" src="{{ page.image }}">
       {%- endif -%}
       {%- if page.audio -%}
