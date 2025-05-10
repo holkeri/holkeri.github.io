@@ -8,11 +8,11 @@ image: "/assets/img/nyhavn.jpeg"
 ![Nyhavn](/assets/img/nyhavn.jpeg)
 Nyhavn
 
-![Bispebjerg hospital](/assets/img/bispebjerg-hospital.jpeg)
-Bispebjerg hospital
-
 ![Trekroner fort](/assets/img/trekroner-fort.jpeg)
 Trekroner fort
+
+![Bispebjerg hospital](/assets/img/bispebjerg-hospital.jpeg)
+Bispebjerg hospital
 
 ![Rosenborg castle](/assets/img/rosenborg-castle.jpeg)
 Rosenborg castle
