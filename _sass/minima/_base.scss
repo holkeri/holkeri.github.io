@@ -61,7 +61,20 @@ main {
  * Images
  */
 
- .post-content img, .post-list img {
+ .post-content img {
+  max-width: min(100vw - 2.5 * #{$spacing-unit}, #{$big-image-width});
+  max-height: $big-image-height;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+
+  @include media-query($on-laptop) {
+    max-width: min(100vw - 1.5 * #{$spacing-unit}, #{$big-image-width});
+  }
+ }
+
+ .post-list img {
   max-width: 100%;
   border-radius: 4px;
  }

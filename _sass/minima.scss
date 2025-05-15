@@ -28,6 +28,9 @@ $content-width:    720px !default;
 $on-palm:          600px !default;
 $on-laptop:        720px !default;
 
+$big-image-width: 960px !default;
+$big-image-height: 960px !default;
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //   .wrapper {
