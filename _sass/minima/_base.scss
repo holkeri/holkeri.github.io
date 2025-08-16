@@ -63,7 +63,7 @@ main {
 
  .post-content img {
   max-width: min(100vw - 2.5 * #{$spacing-unit}, #{$big-image-width});
-  max-height: $big-image-height;
+  max-height: min(100vh - #{$spacing-unit}, #{$big-image-height});
   position: relative;
   left: 50%;
   transform: translateX(-50%);
