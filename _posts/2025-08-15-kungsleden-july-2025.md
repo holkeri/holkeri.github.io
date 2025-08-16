@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kungsleden, July 2025"
-date: 2025-08-16
+date: 2025-08-15
 tags: photos
 image: "/assets/img/kebnekaise-valley.jpeg"
 ---
