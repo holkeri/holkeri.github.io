@@ -265,12 +265,12 @@
       @include relative-font-size(1.125);
     }
   }
+}
 
-  .dinkus {
-    text-align: center;
-    @include relative-font-size(1.375);
-    margin-top: 1.5 * $base-font-size;
-    margin-bottom: $base-font-size;
-    user-select: none;
-  }
+.dinkus {
+  text-align: center;
+  @include relative-font-size(1.375);
+  margin-top: 1.5 * $base-font-size;
+  margin-bottom: $base-font-size;
+  user-select: none;
 }

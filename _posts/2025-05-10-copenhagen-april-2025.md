@@ -5,21 +5,13 @@ date: 2025-05-10
 tags: photos
 image: "/assets/img/nyhavn.jpeg"
 ---
-![Nyhavn](/assets/img/nyhavn.jpeg)
+{% include figure.html src="/assets/img/nyhavn.jpeg" caption="Nyhavn" %}
 
-Nyhavn
+{% include figure.html src="/assets/img/trekroner-fort.jpeg" caption="Trekroner fort" %}
 
-![Trekroner fort](/assets/img/trekroner-fort.jpeg)
+{% include figure.html src="/assets/img/bispebjerg-hospital.jpeg" caption="Bispebjerg hospital" %}
 
-Trekroner fort
-
-![Bispebjerg hospital](/assets/img/bispebjerg-hospital.jpeg)
-
-Bispebjerg hospital
-
-![Rosenborg castle](/assets/img/rosenborg-castle.jpeg)
-
-Rosenborg castle
+{% include figure.html src="/assets/img/rosenborg-castle.jpeg" caption="Rosenborg castle" %}
 
 ---
 

@@ -5,21 +5,13 @@ date: 2025-08-16
 tags: photos
 image: "/assets/img/isokari-lighthouse.jpeg"
 ---
-![Isokari lighthouse](/assets/img/isokari-lighthouse.jpeg)
+{% include figure.html src="/assets/img/isokari-lighthouse.jpeg" caption="Lighthouse, built in 1833" %}
 
-Lighthouse, built in 1833
+{% include figure.html src="/assets/img/isokari-pilot-cabin.jpeg" caption="Pilot cabin, built in 1858" %}
 
-![Isokari pilot cabin](/assets/img/isokari-pilot-cabin.jpeg)
+{% include figure.html src="/assets/img/isokari-sheep.jpeg" caption="Summer sheep" %}
 
-Pilot cabin, built in 1858
-
-![Isokari sheep](/assets/img/isokari-sheep.jpeg)
-
-Summer sheep
-
-![Isokari flowers](/assets/img/isokari-flowers.jpeg)
-
-Wild flowers
+{% include figure.html src="/assets/img/isokari-flowers.jpeg" caption="Wild flowers" %}
 
 ---
 

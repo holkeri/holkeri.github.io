@@ -5,25 +5,15 @@ date: 2025-08-15
 tags: photos
 image: "/assets/img/laddjuvaggi.jpeg"
 ---
-![Laddjuvággi valley](/assets/img/laddjuvaggi.jpeg)
+{% include figure.html src="/assets/img/laddjuvaggi.jpeg" caption="Laddjuvággi valley" %}
 
-Laddjuvággi valley
+{% include figure.html src="/assets/img/kebnekaise-up.jpeg" caption="Climbing to Kebnekaise" %}
 
-![Climbing to Kebnekaise](/assets/img/kebnekaise-up.jpeg)
+{% include figure.html src="/assets/img/kebnekaise-top.jpeg" caption="Kebnekaise southern top" %}
 
-Climbing to Kebnekaise
+{% include figure.html src="/assets/img/kebnekaise-down.jpeg" caption="Descending from Kebnekaise" %}
 
-![Kebnekaise southern top](/assets/img/kebnekaise-top.jpeg)
-
-Kebnekaise southern top
-
-![Descending from Kebnekaise](/assets/img/kebnekaise-down.jpeg)
-
-Descending from Kebnekaise
-
-![Tjäktjavagge valley](/assets/img/tjaktjavagge.jpeg)
-
-Tjäktjavagge valley
+{% include figure.html src="/assets/img/tjaktjavagge.jpeg" caption="Tjäktjavagge valley" %}
 
 ---
 

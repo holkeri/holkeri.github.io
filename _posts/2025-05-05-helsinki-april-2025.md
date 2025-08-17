@@ -5,21 +5,13 @@ date: 2025-05-05
 tags: photos
 image: "/assets/img/sornainen-prison.jpeg"
 ---
-![Sörnäinen prison](/assets/img/sornainen-prison.jpeg)
+{% include figure.html src="/assets/img/sornainen-prison.jpeg" caption="Sörnäinen prison" %}
 
-Sörnäinen prison
+{% include figure.html src="/assets/img/toolo-bay.jpeg" caption="Töölö bay" %}
 
-![Töölö bay](/assets/img/toolo-bay.jpeg)
+{% include figure.html src="/assets/img/hanasaari-power-plant.jpeg" caption="Hanasaari power plant" %}
 
-Töölö bay
-
-![Hanasaari power plant](/assets/img/hanasaari-power-plant.jpeg)
-
-Hanasaari power plant
-
-![Mustikkamaa](/assets/img/mustikkamaa.jpeg)
-
-Mustikkamaa
+{% include figure.html src="/assets/img/mustikkamaa.jpeg" caption="Mustikkamaa" %}
 
 ---
 

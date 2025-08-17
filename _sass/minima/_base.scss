@@ -61,38 +61,23 @@ main {
  * Images
  */
 
- .post-content img {
-  max-width: min(100vw - 2.5 * #{$spacing-unit}, #{$big-image-width});
-  max-height: min(100vh - #{$spacing-unit}, #{$big-image-height});
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 4px;
-
-  @include media-query($on-laptop) {
-    max-width: min(100vw - 1.5 * #{$spacing-unit}, #{$big-image-width});
-  }
- }
-
- .post-list img {
+img {
   max-width: 100%;
-  max-height: min(100vh - #{$spacing-unit}, 660px);
+  max-height: min(100vh - #{$spacing-unit}, #{$content-width} - 2 * #{$spacing-unit});
   border-radius: 4px;
-  margin-left: auto;
-  margin-right: auto;
  }
 
 img.cover {
   object-fit: contain;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   @extend %vertical-rhythm;
   max-width: 100%;
   border-radius: 4px;
 }
 
 img.small {
+  margin-left: auto;
+  margin-right: auto;
   height: 200px;
   width: 200px;
 }
@@ -116,7 +101,7 @@ figure > img {
 }
 
 figcaption {
-  font-size: $small-font-size;
+  font-size: $base-font-size;
 }
 
 
