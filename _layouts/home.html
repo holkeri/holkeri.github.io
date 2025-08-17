@@ -22,7 +22,7 @@ layout: default
           </a>
         </h3>
         {%- if post.image and post.img_size -%}
-          <img class="cover {{ post.img_size }}" src="{{ post.image }}">
+          <a class="no-style-link" href="{{ post.url | relative_url }}"><img class="cover {{ post.img_size }}" src="{{ post.image }}"></a>
         {%- endif -%}
         {%- if post.audio -%}
           {%- include audio.html src=post.audio -%}
