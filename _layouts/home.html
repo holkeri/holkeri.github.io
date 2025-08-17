@@ -28,7 +28,7 @@ layout: default
           {%- include audio.html src=post.audio -%}
         {%- endif -%}
         {%- if site.show_excerpts -%}
-          <p>{{ post.excerpt }}</p>
+          <p><a class="no-style-link" href="{{ post.url | relative_url }}">{{ post.excerpt }}</a></p>
           {% if post.excerpt != post.content -%}
           <a href="{{ post.url | relative_url }}">
             View more →

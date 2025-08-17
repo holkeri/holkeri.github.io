@@ -212,6 +212,15 @@
   margin: 1.5 * $spacing-unit 0;
 }
 
+.no-style-link {
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
 
 /**
  * Posts
