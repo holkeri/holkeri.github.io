@@ -1,4 +1,4 @@
-Available at [holkeri.github.io](https://holkeri.github.io/)
+Available at [holkeri.fi](https://holkeri.fi/)
 
 # Installing dependencies
 
