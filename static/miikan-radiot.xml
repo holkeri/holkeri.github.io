@@ -2,7 +2,6 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Miikan radiot</title>
-    <description>A collection of internet radio stations.</description>
     <language>en-us</language>
     <item>
       <title>Radio Helsinki</title>
@@ -10,7 +9,7 @@
     </item>
     <item>
       <title>Yle Radio 1</title>
-      <enclosure url="http://icecast.live.yle.fi/radio/YleRadio1/icecast.audio" length="0" type="audio/mpeg"></enclosure>
+      <enclosure url="http://icecast.live.yle.fi/radio/YleRadio1/icecast.audio" length="0" type="audio/aac"></enclosure>
     </item>
   </channel>
 </rss>
