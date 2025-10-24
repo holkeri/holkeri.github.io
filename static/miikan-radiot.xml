@@ -7,5 +7,9 @@
       <title>Radio Helsinki</title>
       <enclosure url="https://stream.radiohelsinki.fi/stream" length="0" type="audio/mpeg"></enclosure>
     </item>
+    <item>
+      <title>Yle radio 1</title>
+      <enclosure url="http://icecast.live.yle.fi/radio/YleRadio1/icecast.audio" length="0" type="audio/aac"></enclosure>
+    </item>
   </channel>
 </rss>
