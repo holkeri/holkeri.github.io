@@ -11,6 +11,8 @@ image: "/assets/img/isokari-lighthouse.jpeg"
 
 {% include figure.html src="/assets/img/isokari-sheep.jpeg" caption="Summer sheep" %}
 
+{% include figure.html src="/assets/img/isokari-dishes.jpeg" caption="Doing the dishes" %}
+
 {% include figure.html src="/assets/img/isokari-flowers.jpeg" caption="Wild flowers" %}
 
 ---
