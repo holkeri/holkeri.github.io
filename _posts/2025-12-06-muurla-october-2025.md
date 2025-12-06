@@ -7,7 +7,7 @@ image: "/assets/img/ford-5000.jpeg"
 ---
 {% include figure.html src="/assets/img/ford-5000.jpeg" caption="Ford 5000" %}
 
-{% include figure.html src="/assets/img/muurla-fields.jpeg" caption="Sowing rustic charm" %}
+{% include figure.html src="/assets/img/muurla-fields.jpeg" caption="Sowing rural charm" %}
 
 {% include figure.html src="/assets/img/muurla-windows.jpeg" caption="Windows XP" %}
 
