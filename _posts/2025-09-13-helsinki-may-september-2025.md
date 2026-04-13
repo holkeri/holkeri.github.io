@@ -13,4 +13,4 @@ image: "/assets/img/pengerkatu.jpeg"
 
 ---
 
-_Shot on Kodak Tri-X 400 (35mm) with Canon AE-1_
+_Shot on Kodak Tri-X 400 with Canon AE-1_

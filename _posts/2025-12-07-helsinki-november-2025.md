@@ -13,4 +13,4 @@ image: "/assets/img/tervasaari.jpeg"
 
 ---
 
-_Shot on SantaColor 100 (35mm) with Olympus XA_
+_Shot on SantaColor 100 with Olympus XA_

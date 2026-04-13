@@ -15,4 +15,4 @@ image: "/assets/img/nyhavn.jpeg"
 
 ---
 
-_Shot on Kodak Ultramax 400 (35mm) with Olympus XA_
+_Shot on Kodak Ultramax 400 with Olympus XA_
