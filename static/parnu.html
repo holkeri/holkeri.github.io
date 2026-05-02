@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pärnu — Kolme päivää Viron kesäpääkaupungissa</title>
+<meta name="description" content="Lomamatkan suunnitelma neljälle aikuiselle ja kahdelle pikkulapselle Pärnussa, Virossa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #FAF6EE;
+  --cream-deep: #F1E9D6;
+  --paper: #F6EFE0;
+  --sand: #E6B664;
+  --sand-soft: #F2D69A;
+  --coral: #DD583E;
+  --coral-soft: #F0A38C;
+  --terracotta: #B05236;
+  --sea: #2C7BA8;
+  --sea-soft: #87B8DC;
+  --sea-deep: #1B5478;
+  --forest: #5C7E3F;
+  --moss: #8AA572;
+  --ink: #251F18;
+  --ink-soft: #6B6258;
+  --ink-faint: #A39A8E;
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'DM Sans', -apple-system, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.65;
+  font-size: 16.5px;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--coral); color: var(--cream); }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+h1 { font-size: clamp(4rem, 14vw, 9rem); font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 350; }
+h2 { font-size: clamp(2.5rem, 6.5vw, 5rem); font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 400; }
+h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-variation-settings: 'opsz' 100, 'SOFT' 25, 'wght' 400; }
+h4 { font-size: 1.125rem; font-weight: 500; letter-spacing: -0.01em; }
+em, .italic { font-style: italic; font-variation-settings: 'opsz' 100, 'SOFT' 100; }
+
+p { margin-bottom: 1rem; }
+a { color: inherit; }
+
+.overline {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.overline::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--coral);
+}
+
+.chapter-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+section {
+  padding: 7rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+section.full { max-width: none; padding-left: 0; padding-right: 0; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  max-width: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    #FFE5B0 0%,
+    #FFCB8C 22%,
+    #FFA677 48%,
+    #C8A8C8 72%,
+    #87B8DC 90%,
+    var(--cream) 100%);
+}
+
+.hero-sun {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  width: clamp(280px, 42vw, 520px);
+  height: clamp(280px, 42vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #FFF0BD 0%, #FFD27A 35%, #FFA85A 65%, transparent 100%);
+  filter: blur(1px);
+  transform: translate(-50%, -50%);
+  animation: sunPulse 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes sunPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.92; }
+  50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+.hero-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+.hero .overline {
+  color: var(--terracotta);
+  margin-bottom: 2.5rem;
+  animation: fadeUp 1.1s 0.3s both;
+}
+.hero .overline::before { background: var(--terracotta); }
+
+.hero h1 {
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1.3s 0.5s both;
+  letter-spacing: -0.04em;
+}
+
+.hero .tagline {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 350;
+  color: var(--ink);
+  margin: 0 auto 3.5rem;
+  max-width: 580px;
+  line-height: 1.4;
+  animation: fadeUp 1.3s 0.7s both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1.3s 0.9s both;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.hero-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+  font-weight: 500;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  animation: fadeUp 1.3s 1.4s both, bob 2.2s 1.4s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* SECTION INTROS — magazine style */
+.section-head {
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: end;
+}
+@media (min-width: 760px) {
+  .section-head { grid-template-columns: 220px 1fr; gap: 4rem; }
+}
+.section-head .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.section-head h2 {
+  margin: 0;
+}
+.section-head .lede {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 1.25rem;
+  max-width: 580px;
+  line-height: 1.5;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+}
+
+/* REVEAL on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger > * { transition-delay: 0s; }
+.stagger.in > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.in > *:nth-child(2) { transition-delay: 0.18s; }
+.stagger.in > *:nth-child(3) { transition-delay: 0.31s; }
+.stagger.in > *:nth-child(4) { transition-delay: 0.44s; }
+
+/* CHAPTER 1 — JOURNEY */
+.journey {
+  background: var(--paper);
+}
+.journey-map-wrap {
+  position: relative;
+  height: 480px;
+  margin: 3rem -1rem 4rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+@media (min-width: 760px) {
+  .journey-map-wrap { height: 540px; margin: 3rem 0 4rem; }
+}
+#routeMap {
+  width: 100%;
+  height: 100%;
+  background: var(--cream-deep);
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 720px) {
+  .options-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+.option-card {
+  background: var(--cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: 2px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
+}
+.option-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--coral);
+}
+.option-letter {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--coral-soft);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 300;
+}
+.option-card.recommended .option-letter { color: var(--coral); }
+.option-card.recommended {
+  background: var(--cream);
+  border-color: var(--coral);
+}
+.option-card .badge {
+  position: absolute;
+  top: -10px;
+  left: 1.75rem;
+  background: var(--coral);
+  color: var(--cream);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.option-card h3 {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+.option-card .subtitle {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+.option-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--cream-deep);
+  border-bottom: 1px solid var(--cream-deep);
+  margin-bottom: 1.5rem;
+}
+.option-stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.65rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.option-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.4rem;
+}
+.option-pros {
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.option-pros li {
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  position: relative;
+}
+.option-pros li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* CHAPTER 2 — THREE DAYS */
+.days-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.day-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+}
+@media (min-width: 760px) {
+  .day-card { grid-template-columns: 280px 1fr; }
+}
+.day-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 60px -30px rgba(37, 31, 24, 0.15);
+}
+
+.day-header {
+  padding: 2.5rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+.day-card:nth-child(1) .day-header {
+  background:
+    linear-gradient(160deg, rgba(221, 88, 62, 0.72), rgba(176, 64, 36, 0.88)),
+    url('https://images.unsplash.com/photo-1690310457081-71c3fb276e10?w=800&q=75&auto=format&fit=crop') center/cover no-repeat;
+  color: var(--cream);
+}
+.day-card:nth-child(2) .day-header {
+  background:
+    linear-gradient(160deg, rgba(92, 126, 63, 0.72), rgba(45, 80, 30, 0.90)),
+    url('https://images.unsplash.com/photo-1531859477547-8cc2baf24a06?w=800&q=75&auto=format&fit=crop') center/cover no-repeat;
+  color: var(--cream);
+}
+.day-card:nth-child(3) .day-header {
+  background:
+    linear-gradient(160deg, rgba(44, 123, 168, 0.72), rgba(27, 84, 120, 0.90)),
+    url('https://images.unsplash.com/photo-1727026726676-b6a87bd3acc8?w=800&q=75&auto=format&fit=crop') center/cover no-repeat;
+  color: var(--cream);
+}
+
+.day-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  line-height: 1;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 350;
+  opacity: 0.95;
+}
+.day-num small {
+  display: block;
+  font-size: 0.7rem;
+  font-style: normal;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-family: var(--sans);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+.day-theme {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  margin-top: 1rem;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+  line-height: 1.3;
+}
+.day-body {
+  padding: 2.5rem 2rem;
+}
+
+.activity {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cream-deep);
+  align-items: start;
+}
+.activity:last-child { border-bottom: none; }
+.activity-time {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  padding-top: 0.3rem;
+}
+.activity-name {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.activity-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  margin-left: 0.5rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.tag.vegan { background: #E5F0DA; color: #4A6A2D; }
+.tag.coffee { background: #F8E5C5; color: #8B5A1A; }
+.tag.flex { background: #DDF0EB; color: #2A6850; }
+
+/* CHAPTER 3 — PÄRNU MAP */
+.parnu-section {
+  background: var(--cream);
+}
+
+.parnu-map-wrap {
+  position: relative;
+  height: 540px;
+  margin: 3rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#parnuMap {
+  width: 100%;
+  height: 100%;
+  background: var(--cream-deep);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 720px) {
+  .legend-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+}
+
+.legend-card {
+  padding: 1.5rem 1.5rem;
+  background: var(--paper);
+  border-radius: 3px;
+}
+.legend-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--cream-deep);
+}
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.legend-list {
+  list-style: none;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.legend-list li {
+  padding: 0.25rem 0;
+}
+.legend-num {
+  display: inline-block;
+  width: 22px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* CHAPTER 4 — HIGHLIGHTS */
+.highlights-section {
+  background: var(--paper);
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 760px) {
+  .highlight-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .highlight-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.highlight {
+  background: var(--cream);
+  padding: 2.5rem 2rem;
+  border-radius: 3px;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.highlight:hover { transform: translateY(-3px); }
+
+.highlight-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-variation-settings: 'opsz' 144;
+}
+.highlight.vegan .highlight-icon { background: #E5F0DA; color: #4A6A2D; }
+.highlight.coffee .highlight-icon { background: #F8E5C5; color: #8B5A1A; }
+.highlight.arch .highlight-icon { background: var(--cream-deep); color: var(--terracotta); }
+
+.highlight h3 {
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+.highlight .subtitle {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.highlight-list {
+  list-style: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.highlight-list li {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--cream-deep);
+}
+.highlight-list li:last-child { border-bottom: none; }
+.highlight-list .place {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.highlight-list .note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* CHAPTER 5 — PRACTICAL */
+.practical-section { background: var(--cream); }
+
+.practical-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 720px) {
+  .practical-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+.tip-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 1.5rem;
+  background: var(--paper);
+  border-radius: 3px;
+}
+.tip-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.65rem;
+  color: var(--coral);
+  flex-shrink: 0;
+  line-height: 1;
+  width: 32px;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.tip-content h4 { margin-bottom: 0.4rem; }
+.tip-content p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  margin: 5rem auto;
+  text-align: center;
+  max-width: 720px;
+  padding: 0 2rem;
+}
+.pull-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.35;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+  letter-spacing: -0.01em;
+}
+.pull-quote .attribution {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 1.75rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* FOOTER */
+.foot {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.foot-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.foot h3 {
+  color: var(--cream);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.foot p {
+  color: var(--cream);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+.foot-meta {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(250, 246, 238, 0.15);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* MAP MARKER STYLES */
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+.marker-pin {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 31, 24, 0.3);
+  border: 2px solid white;
+  animation: dropIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  cursor: pointer;
+  transition: transform 0.25s;
+}
+.marker-pin:hover { transform: scale(1.15); }
+.marker-pin.arch { background: #8B5FBF; }
+.marker-pin.food { background: #DD583E; }
+.marker-pin.nature { background: #5C7E3F; }
+.marker-pin.city { background: #251F18; width: 36px; height: 36px; font-size: 11px; }
+
+@keyframes dropIn {
+  0% { transform: translateY(-30px) scale(0); opacity: 0; }
+  60% { transform: translateY(0) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--cream);
+  border-radius: 3px;
+  box-shadow: 0 12px 32px -8px rgba(37, 31, 24, 0.2);
+  padding: 6px 4px;
+}
+.leaflet-popup-content {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  margin: 12px 16px;
+  line-height: 1.5;
+}
+.leaflet-popup-content strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.popup-links {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--cream-deep);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.popup-links a {
+  color: var(--coral);
+  text-decoration: none;
+  font-weight: 500;
+}
+.popup-links a:hover {
+  text-decoration: underline;
+}
+.leaflet-popup-tip { background: var(--cream); }
+.leaflet-popup-close-button { color: var(--ink-soft) !important; padding: 6px 8px 0 0 !important; }
+
+.leaflet-container { font-family: var(--sans) !important; background: var(--cream-deep) !important; }
+.leaflet-control-attribution { font-size: 10px !important; background: rgba(250,246,238,0.85) !important; }
+
+/* DECORATIVE ELEMENTS */
+.divider {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+}
+.divider span {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--coral-soft);
+  letter-spacing: 1.5em;
+}
+
+/* SUN FACE — playful! */
+.sun-face {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  width: clamp(140px, 22vw, 240px);
+  height: clamp(140px, 22vw, 240px);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  animation: sunSpin 60s linear infinite;
+}
+@keyframes sunSpin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.sun-face .face {
+  animation: sunBlink 5s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes sunBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  93%, 96% { transform: scaleY(0.1); }
+}
+
+/* CAST — matkaseurue */
+.cast-section {
+  background: var(--cream);
+  position: relative;
+}
+.cast-section::before {
+  content: '✦ ✦ ✦';
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 1.5em;
+  color: var(--coral-soft);
+  font-size: 0.75rem;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+@media (max-width: 760px) { .cast-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+@media (max-width: 460px) { .cast-grid { grid-template-columns: 1fr; } }
+
+.cast-card {
+  background: var(--paper);
+  padding: 2rem 1.25rem 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, background 0.3s;
+  position: relative;
+}
+.cast-card:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  border-color: var(--coral);
+  background: var(--cream);
+}
+.cast-card:nth-child(even):hover { transform: translateY(-4px) rotate(1deg); }
+
+.cast-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.85rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  position: relative;
+}
+.cast-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px dashed currentColor;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.cast-card:hover .cast-avatar::after { animation: spinSlow 8s linear infinite; }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+
+.cast-card[data-color="coffee"] .cast-avatar { background: #E8D5B7; color: #6B4423; }
+.cast-card[data-color="coral"] .cast-avatar { background: #F5C9BC; color: #B0432C; }
+.cast-card[data-color="blush"] .cast-avatar { background: #FAE0E6; color: #9C4459; }
+.cast-card[data-color="sea"] .cast-avatar { background: #C5DCE9; color: #2B5878; }
+.cast-card[data-color="moss"] .cast-avatar { background: #D4DFC2; color: #4A6228; }
+.cast-card[data-color="sand"] .cast-avatar { background: #F4DDA8; color: #8B6315; }
+
+.cast-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+}
+.cast-name .age {
+  font-size: 0.75rem;
+  font-style: normal;
+  font-family: var(--sans);
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  font-variation-settings: normal;
+  margin-left: 0.25rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.cast-role {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.85rem;
+  font-weight: 500;
+}
+.cast-bio {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  font-style: italic;
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+}
+
+/* Playful character notes inside day cards */
+.cast-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--coral);
+  font-style: italic;
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.cast-note::before {
+  content: '↳';
+  font-style: normal;
+  opacity: 0.6;
+}
+
+
+/* Squiggle separator */
+.squiggle {
+  display: block;
+  margin: 2rem auto;
+  width: 80px;
+  opacity: 0.5;
+}
+
+/* POST-IT NOTE — playful work reminder */
+.postit {
+  background: #FFE89A;
+  padding: 1.75rem 1.5rem 1.25rem;
+  border-radius: 2px;
+  position: relative;
+  transform: rotate(-2deg);
+  box-shadow: 0 8px 24px -10px rgba(37, 31, 24, 0.25);
+  font-family: var(--serif);
+  max-width: 300px;
+  margin: 4rem auto;
+  transition: transform 0.4s;
+}
+.postit:hover { transform: rotate(0deg) scale(1.02); }
+.postit::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 16px;
+  background: rgba(220, 100, 80, 0.4);
+  border-radius: 1px;
+}
+.postit-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8B5A1A;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.postit-text {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #3D2817;
+  line-height: 1.4;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.postit-text em {
+.postit-text em { font-style: italic; }
+}
+
+/* BUDGET — receipt style */
+.budget-section { background: var(--paper); }
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+@media (min-width: 760px) { .budget-grid { grid-template-columns: 1fr 1fr; } }
+
+.budget-card {
+  background: var(--cream);
+  padding: 2.5rem 2rem;
+  border-radius: 3px;
+  position: relative;
+  border: 1px solid var(--cream-deep);
+}
+.budget-card.recommended {
+  border-color: var(--coral);
+}
+.budget-card .badge {
+  position: absolute;
+  top: -10px;
+  left: 1.75rem;
+  background: var(--coral);
+  color: var(--cream);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.budget-letter {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 4rem;
+  color: var(--coral-soft);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 350;
+}
+.budget-card.recommended .budget-letter { color: var(--coral); }
+.budget-card h3 {
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+.budget-card .subtitle {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+.budget-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px dashed var(--cream-deep);
+  gap: 1rem;
+}
+.budget-row:first-child { padding-top: 0; }
+.budget-row .label {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.budget-row .label small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-top: 0.15rem;
+  font-style: italic;
+}
+.budget-row .amount {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink);
+  white-space: nowrap;
+  font-variation-settings: 'opsz' 100, 'SOFT' 100;
+}
+.budget-row.total {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--coral);
+  border-bottom: none;
+}
+.budget-row.total .label {
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 1rem;
+}
+.budget-row.total .amount {
+  font-size: 1.6rem;
+  color: var(--coral);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 400;
+}
+.budget-row.total .amount small {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  text-align: right;
+  font-style: normal;
+  font-family: var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.budget-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+}
+
+/* PHOTO DIVIDER */
+.photo-divider {
+  width: 100%;
+  height: 56vh;
+  min-height: 320px;
+  max-height: 560px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+.photo-divider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  transition: transform 12s ease;
+  display: block;
+}
+.photo-divider:hover img { transform: scale(1.04); }
+.photo-caption {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 3rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: rgba(250, 246, 238, 0.92);
+  text-shadow: 0 2px 16px rgba(37, 31, 24, 0.55);
+  font-variation-settings: 'opsz' 100, 'SOFT' 100, 'wght' 350;
+}
+.photo-attrib {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 0.6rem;
+  color: rgba(250, 246, 238, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.photo-attrib a { color: inherit; text-decoration: none; }
+.photo-attrib a:hover { color: rgba(250, 246, 238, 0.75); }
+
+/* Legend links */
+.legend-link {
+  font-size: 0.68rem;
+  color: var(--coral);
+  text-decoration: none;
+  margin-left: 0.4rem;
+  opacity: 0.65;
+  font-weight: 500;
+}
+.legend-link:hover { opacity: 1; }
+
+/* Highlight links styling */
+.highlight-list a {
+  color: var(--coral);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  margin-top: 0.35rem;
+}
+.highlight-list a:hover { text-decoration: underline; }
+.highlight-list .links { margin-top: 0.4rem; display: flex; gap: 0.85rem; flex-wrap: wrap; }
+
+@media (max-width: 600px) {
+  section { padding: 5rem 1.5rem; }
+  .hero-stats { gap: 2rem; }
+  .activity { grid-template-columns: 70px 1fr; gap: 1rem; }
+  .day-header { min-height: 160px; }
+  .option-letter { font-size: 3.5rem; }
+  .cast-section::before { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-sun"></div>
+  <svg class="sun-face" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g class="face">
+      <circle cx="78" cy="92" r="6" fill="#3D2817"/>
+      <circle cx="122" cy="92" r="6" fill="#3D2817"/>
+      <path d="M 75 115 Q 100 135 125 115" stroke="#3D2817" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="62" cy="108" r="4" fill="#FF8C7A" opacity="0.5"/>
+      <circle cx="138" cy="108" r="4" fill="#FF8C7A" opacity="0.5"/>
+    </g>
+  </svg>
+  <div class="hero-grain"></div>
+  <svg class="hero-waves" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,100 C240,140 480,60 720,100 C960,140 1200,60 1440,100 L1440,200 L0,200 Z" fill="#7BAACC" opacity="0.6"/>
+    <path d="M0,140 C240,170 480,110 720,140 C960,170 1200,110 1440,140 L1440,200 L0,200 Z" fill="#5891B8" opacity="0.7"/>
+    <path d="M0,180 C240,195 480,165 720,180 C960,195 1200,165 1440,180 L1440,200 L0,200 Z" fill="#3F7AA0" opacity="0.85"/>
+  </svg>
+  <div class="hero-content">
+    <div class="overline">Lomamatka · Elokuu 2026</div>
+    <h1>Pärnu</h1>
+    <p class="tagline">Kolme päivää, kuusi matkustajaa, yksi <em>vegaani</em> &mdash; ja huomattavan paljon kahvia.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">4 + 2</div>
+        <div class="hero-stat-label">Aikuista &amp; mukulaa</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Kokonaista päivää</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Reittivaihtoehtoa</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">11</div>
+        <div class="hero-stat-label">Kohdetta kartalla</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Selaa &darr;</div>
+</section>
+
+<div class="photo-divider">
+  <img
+    src="https://images.unsplash.com/photo-1727026726676-b6a87bd3acc8?w=1800&q=80&auto=format&fit=crop"
+    alt="Baltian rannikko — hiekkaranta ja ajopuut"
+    loading="lazy"
+  >
+  <div class="photo-caption">Viron rannikko — <em>Pärnu odottaa</em></div>
+  <div class="photo-attrib">Kuva: <a href="https://unsplash.com/@ilzevanaga" target="_blank" rel="noopener">Ilze Vanaga</a> / Unsplash</div>
+</div>
+
+<section class="cast-section">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Esipuhe</span>
+      <span class="overline">Matkaseurue</span>
+    </div>
+    <div>
+      <h2>Matkalle lähtee <em>kuusi</em></h2>
+      <p class="lede">Kaksi pikkulapsiperhettä ja yksi sitoutunut kahvifani, jotka ovat sopineet kärsivällisyydestä etukäteen.</p>
+    </div>
+  </div>
+
+  <div class="cast-grid stagger reveal">
+    <div class="cast-card reveal" data-color="coffee">
+      <div class="cast-avatar">M</div>
+      <div class="cast-name">Miikka</div>
+      <div class="cast-role">Vegaani · kahvifani</div>
+      <p class="cast-bio">Artun vakavampi veli. Mittaa Pastoraatin espresson kuumeen termometrillä ja saapuu Tallinnan satamaan jo Paper Mill mielessään.</p>
+    </div>
+    <div class="cast-card reveal" data-color="blush">
+      <div class="cast-avatar">A</div>
+      <div class="cast-name">Anna</div>
+      <div class="cast-role">Suunnittelija</div>
+      <p class="cast-bio">Aikataulut, varakortit ja Excel-taulukot. Tuntee Sylvin päiväunirytmin paremmin kuin oman kalenterinsa.</p>
+    </div>
+    <div class="cast-card reveal" data-color="sand">
+      <div class="cast-avatar">S</div>
+      <div class="cast-name">Sylvi <span class="age">9 kk</span></div>
+      <div class="cast-role">Reissun pienin</div>
+      <p class="cast-bio">Amoksen serkku. Tutustuu pitkospuihin rattaista käsin, puhuu pääasiassa diftongeja, ymmärtää kaikenlaisia lomahankintoja.</p>
+    </div>
+    <div class="cast-card reveal" data-color="sea">
+      <div class="cast-avatar">A</div>
+      <div class="cast-name">Arttu</div>
+      <div class="cast-role">Lääkäri · hassuttelija</div>
+      <p class="cast-bio">Miikan rennompi veli. Hoitaa arkisin potilaita chatissa; lomalla pyrkii olemaan suunnittelematta mitään. Tervise Paradiisin pisimmän liu'un ensitestaaja.</p>
+    </div>
+    <div class="cast-card reveal" data-color="moss">
+      <div class="cast-avatar">R</div>
+      <div class="cast-name">Roosa</div>
+      <div class="cast-role">Eläinihminen</div>
+      <p class="cast-bio">Pyytää lupaa rapsuttaa jokaista vastaantulevaa koiraa. Pärnussa luvassa myös alpakoita, kääpiövuohia ja angorakaneja.</p>
+    </div>
+    <div class="cast-card reveal" data-color="coral">
+      <div class="cast-avatar">A</div>
+      <div class="cast-name">Amos <span class="age">2 v</span></div>
+      <div class="cast-role">Heppojen suurkuluttaja</div>
+      <p class="cast-bio">Sylvin serkku. Suosikkisanat: <em>"heppa!"</em> ja <em>"vielä yks"</em>. Sõõrikubaarin makuraadin nuorin äänestäjä.</p>
+    </div>
+  </div>
+</section>
+
+<div class="photo-divider">
+  <img
+    src="https://images.unsplash.com/photo-1755778857545-562d3187b4d7?w=1800&q=80&auto=format&fit=crop"
+    alt="Lautta purjehtii Helsingin saaristossa"
+    loading="lazy"
+  >
+  <div class="photo-caption">Helsinki &rarr; Tallinna &mdash; <em>matka alkaa täältä</em></div>
+  <div class="photo-attrib">Kuva: <a href="https://unsplash.com/@mareklumi" target="_blank" rel="noopener">Marek Lumi</a> / Unsplash</div>
+</div>
+
+<section class="journey full">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku I</span>
+      <span class="overline">Reitti</span>
+    </div>
+    <div>
+      <h2><em>Helsingistä</em><br>Pärnuun</h2>
+      <p class="lede">Yhteensä noin 320 kilometriä etelään: kaksi tuntia merta, sitten reilu tunti maantietä Via Baltican lehmusten lomassa.</p>
+    </div>
+  </div>
+
+  <div class="journey-map-wrap reveal">
+    <div id="routeMap"></div>
+  </div>
+
+  <div class="options-grid stagger reveal">
+    <div class="option-card recommended reveal">
+      <span class="badge">Suositus pikkulapsille</span>
+      <span class="option-letter">A</span>
+      <h3>Auto lautalla</h3>
+      <p class="subtitle">Joustavin vaihtoehto vauvan vehkeiden kanssa</p>
+      <div class="option-stats">
+        <div>
+          <div class="option-stat-num">~3 t 40 min</div>
+          <div class="option-stat-label">Yhteensä</div>
+        </div>
+        <div>
+          <div class="option-stat-num">200&ndash;350 €</div>
+          <div class="option-stat-label">Autopaketti / suunta</div>
+        </div>
+      </div>
+      <ul class="option-pros">
+        <li>Soomaan kansallispuisto omalla aikataululla</li>
+        <li>Turvaistuimet ja matkatavarat aina mukana</li>
+        <li>Tallink, Viking ja Eckerö Line vertailussa</li>
+      </ul>
+    </div>
+
+    <div class="option-card reveal">
+      <span class="option-letter">B</span>
+      <h3>Autoton</h3>
+      <p class="subtitle">Lautta + Lux Express -suorabussi</p>
+      <div class="option-stats">
+        <div>
+          <div class="option-stat-num">~5 t</div>
+          <div class="option-stat-label">Yhteensä</div>
+        </div>
+        <div>
+          <div class="option-stat-num">30&ndash;60 €</div>
+          <div class="option-stat-label">Per henkilö</div>
+        </div>
+      </div>
+      <ul class="option-pros">
+        <li>Bussi suoraan D-terminaalista Pärnuun</li>
+        <li>Ei parkkeerausstressiä Pärnussa</li>
+        <li>Mahdollisuus pysähtyä kahville Tallinnassa</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="pull-quote reveal">
+  <p>&ldquo;Pitkä, lämmin, matala &mdash; Pärnun ranta on yksi <em>vähemmän tunnetuista</em> maailman rantakaupungeista.&rdquo;</p>
+  <div class="attribution">Lonely Planet · Top 10 Lesser-Known Beach Cities, 2018</div>
+</div>
+
+<section class="days-section">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku II</span>
+      <span class="overline">Ohjelma</span>
+    </div>
+    <div>
+      <h2>Kolme päivää,<br><em>kolme tunnelmaa</em></h2>
+      <p class="lede">Vanhakaupungin arkkitehtuuri perjantaina, suon pitkospuut lauantaina, lasten ihme­maailma sunnuntaina.</p>
+    </div>
+  </div>
+
+  <div class="days-grid">
+    <article class="day-card reveal">
+      <div class="day-header">
+        <div>
+          <div class="day-num"><small>Päivä yksi</small>I</div>
+        </div>
+        <div class="day-theme">Vanha kaupunki<br>& <em>arkkitehtuuri</em></div>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">Aamu</div>
+          <div>
+            <div class="activity-name">Rüütli kävelykatu</div>
+            <div class="activity-desc">Tallinnan portti (1600-l.), Punainen torni (1400-l.), Elisabetin kirkko ja Vallikäär-puiston lehmuskujat.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Lounas</div>
+          <div>
+            <div class="activity-name">Liana Kohvik <span class="tag vegan">vegaani</span></div>
+            <div class="activity-desc">Rüütli 36 · ma–pe 11–16 · päivittäin vaihtuva keitto ja kolme pääruokaa, kaikki vegaanisia.</div>
+            <div class="cast-note">Miikka huokaisee helpotuksesta. Tilaa kahdesti.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Iltapäivä</div>
+          <div>
+            <div class="activity-name">Rannahotell & rantapromenadi</div>
+            <div class="activity-desc">Funktionalistinen helmi (1937), perheen iso leikkipuisto ja Itämeren vihreä rantapuisto.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Kahvi</div>
+          <div>
+            <div class="activity-name">Pastoraat <span class="tag coffee">kahvi</span> <span class="tag flex">vege-ok</span></div>
+            <div class="activity-desc">Kuninga 30 · 1696 pastoraatti­rakennuksessa · Pärnun parhaat flat whitet hyvin tehtyinä.</div>
+            <div class="cast-note">Miikka käy toistakin kierrosta. Sitten kolmatta.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Illallinen</div>
+          <div>
+            <div class="activity-name">Punkt 13:15 <span class="tag flex">vege-ok</span></div>
+            <div class="activity-desc">Useita vegaanisia pizzavaihtoehtoja, lapsille rento ja perheystävällinen tunnelma.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card reveal">
+      <div class="day-header">
+        <div>
+          <div class="day-num"><small>Päivä kaksi</small>II</div>
+        </div>
+        <div class="day-theme">Pitkospuita ja <em>suolampien</em><br>peilejä</div>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">Aamu &middot; A</div>
+          <div>
+            <div class="activity-name">Soomaan kansallispuisto</div>
+            <div class="activity-desc">Riisan luontopolun ensimmäinen kilometri on esteetöntä pitkospuuta — vaunuilla pääsee suolammen rannalle, lintutorni alkumatkalla.</div>
+            <div class="cast-note">Sylvi tutustuu sammalmättäisiin rattaista. Amos haluaa kokeilla itse.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Aamu &middot; B</div>
+          <div>
+            <div class="activity-name">Pärnun rantaniityn luontopolku</div>
+            <div class="activity-desc">Puolen kilometrin pitkospuu kaupungin rannalta, kesäisin laiduntavia lehmiä ja hiljainen lintutorni.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Eväät</div>
+          <div>
+            <div class="activity-name">Take-away Pastoraatista <span class="tag coffee">kahvi</span></div>
+            <div class="activity-desc">Termospullolliset matkalle ja pari pastaa pasteijaa &mdash; vegaaniversiot myös.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Iltapäivä</div>
+          <div>
+            <div class="activity-name">Tervise Paradiis</div>
+            <div class="activity-desc">Viron suurin vesipuisto: vauva-altaita, lämmin ulkoallas (auki ympäri vuoden), turvallisia liukuja lapsille.</div>
+            <div class="cast-note">Arttu testaa pisimmän liu'un. Roosa ei testaa, mutta ottaa kuvan.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Illallinen</div>
+          <div>
+            <div class="activity-name">Villa Ammende <span class="tag flex">vege-ok</span></div>
+            <div class="activity-desc">Jugendkartano ja modernia virolaista keittiötä, kokki Rene Uusmees vastaa keittiöstä. Vegaaniannos pyydettäessä.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card reveal">
+      <div class="day-header">
+        <div>
+          <div class="day-num"><small>Päivä kolme</small>III</div>
+        </div>
+        <div class="day-theme">Museot ja <em>Lottemaa</em></div>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">Aamu</div>
+          <div>
+            <div class="activity-name">Pärnun museo</div>
+            <div class="activity-desc">Kompakti, interaktiivinen näyttely kivikaudelta nykypäivään &mdash; sopivasti ohjelmaa pikkulapsen jaksamiselle.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Välipala</div>
+          <div>
+            <div class="activity-name">Sõõrikubaar <span class="tag vegan">vegaani</span></div>
+            <div class="activity-desc">Pühavaimu 12 · 1950-luvulta · 100 % vegaanit virolaiset uppopaisto-donitsit, sokeria ja muistoja.</div>
+            <div class="cast-note">Amos saa elämänsä ensimmäisen sõõrikun. Pyytää toista.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Lounas</div>
+          <div>
+            <div class="activity-name">Liana Kohvik (toiste) <span class="tag vegan">vegaani</span></div>
+            <div class="activity-desc">Päivittäin vaihtuva menu — toisella käynnillä koko ruokalista on uusi.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Iltapäivä</div>
+          <div>
+            <div class="activity-name">Lottemaa-teemapuisto</div>
+            <div class="activity-desc">15 min Pärnusta etelään · piirroselokuvasta tutut hahmot, askartelu, seikkailupuisto, koko perheen suosikki.</div>
+            <div class="cast-note">Päivän voittaja: Amos. Lähimpänä toista sijaa: Sylvi rattaissaan.</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">Paluu</div>
+          <div>
+            <div class="activity-name">Hyvästit Pärnulle</div>
+            <div class="activity-desc">Iltalähtö illemmaksi — lapset nukkuvat lautan tai auton matkan, aikuiset rauhassa hytissä tai kannella.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="photo-divider">
+  <img
+    src="https://images.unsplash.com/photo-1542740714-cb46e1b964e3?w=1800&q=80&auto=format&fit=crop&fit=crop&crop=center"
+    alt="Virolainen suopolun pitkospuu"
+    loading="lazy"
+  >
+  <div class="photo-caption"><em>Bog Trail</em> &mdash; Viron suo kutsuu</div>
+  <div class="photo-attrib">Kuva: <a href="https://unsplash.com/@maksimshutov" target="_blank" rel="noopener">Maksim Shutov</a> / Unsplash · Estonia</div>
+</div>
+
+<section class="parnu-section full">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku III</span>
+      <span class="overline">Pärnu</span>
+    </div>
+    <div>
+      <h2><em>Yksitoista</em> kohdetta<br>kävelymatkan päässä</h2>
+      <p class="lede">Vanhakaupunki, ranta ja luontopolku mahtuvat yhdelle kartalle &mdash; kaikki kohteet ovat kävellen tai parin minuutin ajomatkan päässä.</p>
+    </div>
+  </div>
+
+  <div class="parnu-map-wrap reveal">
+    <div id="parnuMap"></div>
+  </div>
+
+  <div class="legend-grid stagger reveal">
+    <div class="legend-card reveal">
+      <div class="legend-head">
+        <span class="legend-dot" style="background: #8B5FBF;"></span>
+        <span class="legend-title">Arkkitehtuuri</span>
+      </div>
+      <ul class="legend-list">
+        <li><span class="legend-num">1</span>Tallinnan portti <a href="https://www.google.com/maps?q=58.3878,24.4968" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">2</span>Vallikäär-puisto <a href="https://www.google.com/maps?q=58.3884,24.4960" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">3</span>Punainen torni <a href="https://www.google.com/maps?q=58.3855,24.4965" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">4</span>Elisabetin kirkko <a href="https://www.google.com/maps?q=58.3839,24.4960" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">5</span>Pärnun museo <a href="https://www.google.com/maps?q=58.3856,24.4990" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">9</span>Rannahotell <a href="https://www.google.com/maps?q=58.3784,24.5041" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+      </ul>
+    </div>
+    <div class="legend-card reveal">
+      <div class="legend-head">
+        <span class="legend-dot" style="background: #DD583E;"></span>
+        <span class="legend-title">Vegaani &amp; kahvi</span>
+      </div>
+      <ul class="legend-list">
+        <li><span class="legend-num">6</span>Pastoraat <a href="https://www.google.com/maps?q=58.3838,24.4965" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">7</span>Liana Kohvik <a href="https://www.google.com/maps?q=58.3839,24.4956" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">8</span>Sõõrikubaar <a href="https://www.google.com/maps?q=58.3852,24.4980" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+      </ul>
+    </div>
+    <div class="legend-card reveal">
+      <div class="legend-head">
+        <span class="legend-dot" style="background: #5C7E3F;"></span>
+        <span class="legend-title">Luonto &amp; ranta</span>
+      </div>
+      <ul class="legend-list">
+        <li><span class="legend-num">10</span>Tervise Paradiis <a href="https://www.google.com/maps?q=58.3795,24.4981" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+        <li><span class="legend-num">11</span>Rantaniityn luontopolku <a href="https://www.google.com/maps?q=58.3756,24.4858" target="_blank" rel="noopener" class="legend-link">↗</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="highlights-section full">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku IV</span>
+      <span class="overline">Erikoishuomiot</span>
+    </div>
+    <div>
+      <h2>Vegaanille <em>ja</em><br>kahvifaneille</h2>
+      <p class="lede">Pieni Pärnu yllättää: yksi täysin vegaaninen kahvila, yksi todella laadukas espresso ja yksi 1950-luvun donitsibaari, jonka taikinassa ei ole maitoa.</p>
+    </div>
+  </div>
+
+  <div class="highlight-grid stagger reveal">
+    <article class="highlight vegan reveal">
+      <div class="highlight-icon"><em>V</em></div>
+      <div class="subtitle">Vegaani</div>
+      <h3>Kasvis­paratiisi pienessä kaupungissa</h3>
+      <ul class="highlight-list">
+        <li>
+          <span class="place">Liana Kohvik</span>
+          <span class="note">Ainoa 100 % vegaani · Rüütli 36 · ma–pe 11–16 · 8 € pääruoka</span>
+          <div class="links">
+            <a href="https://www.facebook.com/lianakohvik/" target="_blank" rel="noopener">FB ↗</a>
+            <a href="https://www.google.com/maps?q=58.3839,24.4956" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Sõõrikubaar</span>
+          <span class="note">1950-luvun klassikko · vegaanit donitsit · Pühavaimu 12</span>
+          <div class="links">
+            <a href="https://www.google.com/maps?q=58.3852,24.4980" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Pastoraat</span>
+          <span class="note">Kukkakaalipihvi ja vegaaniset aamiaiset · Kuninga 30</span>
+          <div class="links">
+            <a href="https://rosenplanter.ee/en/pastoraat-cafe/" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps?q=58.3838,24.4965" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Punkt 13:15</span>
+          <span class="note">Useita vegaanisia pizzoja, perhe­ystävällinen ilta­paikka</span>
+          <div class="links">
+            <a href="https://www.google.com/maps/search/Punkt+13:15+P%C3%A4rnu" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <article class="highlight coffee reveal">
+      <div class="highlight-icon"><em>K</em></div>
+      <div class="subtitle">Specialty coffee</div>
+      <h3>Pärnun paras ja Tallinnan välipysähdys</h3>
+      <ul class="highlight-list">
+        <li>
+          <span class="place">Pastoraat &middot; Pärnu</span>
+          <span class="note">Kaupungin paras espresso · 1696 rakennettu pastoraatti</span>
+          <div class="links">
+            <a href="https://rosenplanter.ee/en/pastoraat-cafe/" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps?q=58.3838,24.4965" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Paper Mill Coffee &middot; Tallinna</span>
+          <span class="note">Viron ykköspaahtimo, vanhassa paperitehtaan paloasemalla · Masina 20</span>
+          <div class="links">
+            <a href="https://papermill.coffee/en" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps/search/Paper+Mill+Coffee+Masina+20+Tallinn" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">KALVE Coffee &middot; Tallinna</span>
+          <span class="note">Riikalainen specialty-paahtimo, B Corp · Pärnu mnt 27</span>
+          <div class="links">
+            <a href="https://kalvecoffee.com/" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps/search/KALVE+Coffee+P%C3%A4rnu+mnt+27+Tallinn" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Renard / The Brick &middot; Telliskivi</span>
+          <span class="note">Tallinnan kolmannen aallon klassikoita</span>
+          <div class="links">
+            <a href="https://www.thebrickcoffee.ee/" target="_blank" rel="noopener">The Brick ↗</a>
+            <a href="https://www.google.com/maps/search/Telliskivi+Creative+City+Tallinn" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <article class="highlight arch reveal">
+      <div class="highlight-icon"><em>A</em></div>
+      <div class="subtitle">Arkkitehtuuri</div>
+      <h3>Hansaa, barokkia, jugendia, funkista</h3>
+      <ul class="highlight-list">
+        <li>
+          <span class="place">Tallinnan portti, 1600-l.</span>
+          <span class="note">Ainoa säilynyt suojavallin portti koko Baltiassa</span>
+          <div class="links">
+            <a href="https://www.google.com/maps?q=58.3878,24.4968" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Punainen torni, 1400-l.</span>
+          <span class="note">Pärnun vanhin säilynyt rakennus, hansakaupungin jäänne</span>
+          <div class="links">
+            <a href="https://www.google.com/maps?q=58.3855,24.4965" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Rannahotell, 1937</span>
+          <span class="note">Olev Siinmaan funktionalistinen helmi rantapuisto­ssa</span>
+          <div class="links">
+            <a href="https://www.rannahotell.ee/" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps?q=58.3784,24.5041" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+        <li>
+          <span class="place">Villa Ammende</span>
+          <span class="note">Jugendkartano vuodelta 1905, hotelli ja ravintola</span>
+          <div class="links">
+            <a href="https://ammende.ee/" target="_blank" rel="noopener">Verkkosivut ↗</a>
+            <a href="https://www.google.com/maps/search/Villa+Ammende+P%C3%A4rnu" target="_blank" rel="noopener">Maps ↗</a>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </div>
+</div>
+</section>
+
+<div class="photo-divider" style="max-height: 420px;">
+  <img
+    src="https://images.unsplash.com/photo-1542105726-7982ea78fb59?w=1800&q=80&auto=format&fit=crop&crop=top"
+    alt="Perhe kävelee rannalla"
+    loading="lazy"
+    style="object-position: center 30%;"
+  >
+  <div class="photo-caption">Pärnun ranta odottaa &mdash; <em>kaikille jotain</em></div>
+  <div class="photo-attrib">Kuva: <a href="https://unsplash.com/@limorganon" target="_blank" rel="noopener">Limor Zellermayer</a> / Unsplash</div>
+</div>
+
+<section class="budget-section full">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku V</span>
+      <span class="overline">Budjetti</span>
+    </div>
+    <div>
+      <h2>Karkea <em>kassakuitti</em></h2>
+      <p class="lede">Arviot koko kuusihenkiselle joukkueelle elokuussa 2026. Lautan ja hotellin hinnat ovat korkeimmillaan heinä–elokuussa, joten varauksen ajankohta vaikuttaa.</p>
+    </div>
+  </div>
+
+  <div class="budget-grid stagger reveal">
+    <div class="budget-card recommended reveal">
+      <span class="badge">Suositus</span>
+      <div class="budget-letter">A</div>
+      <h3>Auto lautalla</h3>
+      <p class="subtitle">Joustavin pikkulasten kanssa</p>
+      <ul class="budget-rows">
+        <li class="budget-row">
+          <span class="label">Lautta auton kanssa<small>edestakaisin · autopaketti · hytti</small></span>
+          <span class="amount">400&ndash;600 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Hotelli<small>2 perhehuonetta · 2 yötä</small></span>
+          <span class="amount">600&ndash;900 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Ruoat ravintoloissa<small>3 päivää · 4 aikuista</small></span>
+          <span class="amount">600&ndash;800 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Aktiviteetit<small>Tervise Paradiis, Lottemaa, museo</small></span>
+          <span class="amount">200&ndash;300 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Polttoaine ja parkki<small>Pärnu &harr; Helsinki + paikallinen</small></span>
+          <span class="amount">50&ndash;100 €</span>
+        </li>
+        <li class="budget-row total">
+          <span class="label">Yhteensä</span>
+          <span class="amount">~1850&ndash;2700 €<small>~310&ndash;450 € / hlö</small></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="budget-card reveal">
+      <div class="budget-letter">B</div>
+      <h3>Autoton</h3>
+      <p class="subtitle">Lautta + Lux Express</p>
+      <ul class="budget-rows">
+        <li class="budget-row">
+          <span class="label">Lautta ilman autoa<small>4 aikuista + 2 lasta · hytti</small></span>
+          <span class="amount">300&ndash;450 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Lux Express -bussi<small>Tallinna &harr; Pärnu · 4 aikuista</small></span>
+          <span class="amount">80&ndash;120 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Hotelli<small>2 perhehuonetta · 2 yötä</small></span>
+          <span class="amount">600&ndash;900 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Ruoat ravintoloissa<small>3 päivää · 4 aikuista</small></span>
+          <span class="amount">600&ndash;800 €</span>
+        </li>
+        <li class="budget-row">
+          <span class="label">Aktiviteetit + taksit<small>kohteet osin Pärnun ulkopuolella</small></span>
+          <span class="amount">300&ndash;400 €</span>
+        </li>
+        <li class="budget-row total">
+          <span class="label">Yhteensä</span>
+          <span class="amount">~1880&ndash;2670 €<small>~315&ndash;445 € / hlö</small></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="budget-note">Vinkki: alle 5-vuotiaat usein ilmaiseksi tai voimakkaasti alennettuna useimmissa kohteissa &mdash; Sylvi ja Amos pääsevät pääosin ilman lippua. Lautalle kannattaa etsiä myös laivayhtiöiden kanta-asiakas­alennuksia (Viking Line Club, Tallink Club One, Eckerö S-bonus).</p>
+</div>
+</section>
+
+<section class="practical-section">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="chapter-num">Luku VI</span>
+      <span class="overline">Käytäntöä</span>
+    </div>
+    <div>
+      <h2>Vinkit pikku­lasten<br>kanssa <em>matkaavalle</em></h2>
+      <p class="lede">Reissun isoimmat sudenkuopat ovat ennakoitavissa &mdash; kun nämä ovat kunnossa, lomasta tulee yllättävän rento.</p>
+    </div>
+  </div>
+
+  <div class="practical-grid stagger reveal">
+    <div class="tip-card reveal">
+      <div class="tip-num">i</div>
+      <div class="tip-content">
+        <h4>Hytti molempiin suuntiin</h4>
+        <p>Päivälähdölläkin hytti antaa vauvalle nukkumapaikan ja vaipan­vaihto onnistuu rauhassa. Lisämaksu ~30 €/suunta.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">ii</div>
+      <div class="tip-content">
+        <h4>Vauvalle oma henkilöllisyys</h4>
+        <p>Sekä 9 kk:n että 2-vuotiaan tarvitsevat oman passin tai EU-henkilökortin. Saatava noin 2–3 viikon toimitusajalla.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">iii</div>
+      <div class="tip-content">
+        <h4>Vaipat ja vauvanruoka paikan päältä</h4>
+        <p>Hintataso Virossa on huomattavasti edullisempi kuin Suomessa. Maxima- ja Selver-marketit tarjoavat saman valikoiman.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">iv</div>
+      <div class="tip-content">
+        <h4>Vankka rattaiden malli</h4>
+        <p>Vanhassa kaupungissa on mukulakiveä, ja Soomaan pitkospuiden alkuosa kestää myös tukevat vaunut.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">v</div>
+      <div class="tip-content">
+        <h4>Tarkista Soomaan tilanne</h4>
+        <p>Helmi–huhtikuun "viidennen vuodenajan" aikana osa luontopoluista on veden alla. visitsoomaa.ee päivittää tilanteen.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">vi</div>
+      <div class="tip-content">
+        <h4>Hotellin valinta</h4>
+        <p>Hedon Spa, Estonia Resort tai Rosenplänter (Pastoraatin yllä) — kaksi perhehuonetta tai sviitti palvelee 4+2-kokoonpanoa.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">vii</div>
+      <div class="tip-content">
+        <h4>Bonus: alpakka­farmi</h4>
+        <p>Tooma talu Vana-Saugassa, ~10 min Pärnusta. Alpakoiden lisäksi kääpiövuohia, miniatyyrilampaita ja angora­kaneja. Roosa toivoo, Amos ehdottaa mukaan.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="postit reveal">
+    <div class="postit-label">Muistutus Artulle</div>
+    <div class="postit-text">Loma. Ei chat-potilaita, ei pikakonsultaatioita ystäville heidän oireistaan, ei diagnostiikkaa rannalla. Pärnu on virallisesti lääkärinesi ulottumattomissa &mdash; ensi viikolla on uusi lista.</div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-content">
+    <h3><em>Tervetuloa</em> mukaan!</h3>
+    <p>Pakkaa polkupyörähousut, lasten uikkarit ja aurinkovoidetta. Suomen passit, EU-henkilökortit Sylville ja Amokselle, ja Miikan thermos &mdash; Pärnussa nähdään elokuussa.</p>
+    <div class="foot-meta">Pärnu 2026 · Miikka &middot; Anna &middot; Sylvi &middot; Arttu &middot; Roosa &middot; Amos</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+// ROUTE MAP
+const routeMap = L.map('routeMap', {
+  zoomControl: true,
+  scrollWheelZoom: false,
+  attributionControl: true
+}).setView([59.3, 24.7], 7);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(routeMap);
+
+// City markers using divIcons
+function cityIcon(label) {
+  return L.divIcon({
+    className: 'custom-marker',
+    html: `<div class="marker-pin city" title="${label}">${label.charAt(0)}</div>`,
+    iconSize: [36, 36],
+    iconAnchor: [18, 18]
+  });
+}
+
+const helsinki = [60.1699, 24.9384];
+const tallinn = [59.4434, 24.7531];
+const parnu = [58.3859, 24.4971];
+
+L.marker(helsinki, { icon: cityIcon('Helsinki') }).addTo(routeMap)
+  .bindPopup('<strong>Helsinki</strong>Lähtöpiste — Länsiterminaali tai Katajanokka');
+L.marker(tallinn, { icon: cityIcon('Tallinna') }).addTo(routeMap)
+  .bindPopup('<strong>Tallinna</strong>D-terminaali — Lux Express jatkaa suoraan Pärnuun');
+L.marker(parnu, { icon: cityIcon('Pärnu') }).addTo(routeMap)
+  .bindPopup('<strong>Pärnu</strong>Päämäärä — Viron kesäpääkaupunki');
+
+// Ferry route (animated dashed line)
+const ferryLine = L.polyline([helsinki, tallinn], {
+  color: '#2C7BA8',
+  weight: 3,
+  opacity: 0.8,
+  dashArray: '8, 8',
+  className: 'ferry-line'
+}).addTo(routeMap);
+
+// Road route (solid)
+const roadLine = L.polyline([tallinn, [59.0, 24.6], [58.6, 24.55], parnu], {
+  color: '#5C7E3F',
+  weight: 3,
+  opacity: 0.85
+}).addTo(routeMap);
+
+// Fit bounds to show all cities with padding
+routeMap.fitBounds([helsinki, parnu], { padding: [50, 50] });
+
+// PÄRNU MAP
+const parnuMap = L.map('parnuMap', {
+  zoomControl: true,
+  scrollWheelZoom: false
+}).setView([58.385, 24.497], 14);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(parnuMap);
+
+const poiIcon = (num, cat) => L.divIcon({
+  className: 'custom-marker',
+  html: `<div class="marker-pin ${cat}">${num}</div>`,
+  iconSize: [32, 32],
+  iconAnchor: [16, 16]
+});
+
+const pois = [
+  { lat: 58.3878, lng: 24.4968, num: 1, cat: 'arch', name: 'Tallinnan portti', desc: '1600-luvun portti, ainoa säilynyt suojavallin portti koko Baltiassa.', url: null },
+  { lat: 58.3884, lng: 24.4960, num: 2, cat: 'arch', name: 'Vallikäär-puisto', desc: 'Lehmuskujat, suihkulähde, kaarisillat — romanttisin kulma.', url: null },
+  { lat: 58.3855, lng: 24.4965, num: 3, cat: 'arch', name: 'Punainen torni', desc: 'Vanhin säilynyt rakennus 1400-luvulta — nimestään huolimatta valkoinen.', url: null },
+  { lat: 58.3839, lng: 24.4960, num: 4, cat: 'arch', name: 'Elisabetin kirkko', desc: 'Barokkityylinen luterilainen kirkko vuodelta 1747.', url: null },
+  { lat: 58.3856, lng: 24.4990, num: 5, cat: 'arch', name: 'Pärnun museo', desc: 'Interaktiivinen näyttely kivikaudelta nykypäivään.', url: 'https://www.parnumuuseum.ee/' },
+  { lat: 58.3838, lng: 24.4965, num: 6, cat: 'food', name: 'Pastoraat', desc: 'Pärnun paras espresso · vegaaniset aamiaiset · Kuninga 30.', url: 'https://rosenplanter.ee/en/pastoraat-cafe/' },
+  { lat: 58.3839, lng: 24.4956, num: 7, cat: 'food', name: 'Liana Kohvik', desc: '100 % vegaani · ma–pe 11–16 · Rüütli 36.', url: 'https://www.facebook.com/lianakohvik/' },
+  { lat: 58.3852, lng: 24.4980, num: 8, cat: 'food', name: 'Sõõrikubaar', desc: '1950-luvulta · vegaanit virolaiset donitsit · Pühavaimu 12.', url: null },
+  { lat: 58.3784, lng: 24.5041, num: 9, cat: 'arch', name: 'Rannahotell', desc: 'Funktionalistinen helmi 1937 · arkkitehti Olev Siinmaa.', url: 'https://www.rannahotell.ee/' },
+  { lat: 58.3795, lng: 24.4981, num: 10, cat: 'nature', name: 'Tervise Paradiis', desc: 'Viron suurin vesipuisto · vauva-altaita ja lämmin ulkoallas.', url: 'https://terviseparadiis.ee/' },
+  { lat: 58.3756, lng: 24.4858, num: 11, cat: 'nature', name: 'Rantaniityn luontopolku', desc: '0,5 km pitkospuuta · vauvarattaisiin sopiva · lintutorni puolessa välissä.', url: null }
+];
+
+pois.forEach(p => {
+  const mapsUrl = `https://www.google.com/maps?q=${p.lat},${p.lng}`;
+  const webLink = p.url ? `<a href="${p.url}" target="_blank" rel="noopener">Verkkosivut ↗</a><br>` : '';
+  L.marker([p.lat, p.lng], { icon: poiIcon(p.num, p.cat) })
+    .addTo(parnuMap)
+    .bindPopup(`<strong>${p.num}. ${p.name}</strong>${p.desc}<div class="popup-links">${webLink}<a href="${mapsUrl}" target="_blank" rel="noopener">Avaa Google Mapsissa ↗</a></div>`);
+});
+
+// Fit map to all markers
+const group = L.featureGroup(pois.map(p => L.marker([p.lat, p.lng])));
+parnuMap.fitBounds(group.getBounds().pad(0.15));
+
+// REVEAL ON SCROLL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      // Don't unobserve to allow re-trigger if needed
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger child reveals
+document.querySelectorAll('.stagger').forEach(parent => {
+  const childObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  childObserver.observe(parent);
+});
+
+// Enable scroll-zoom on map click for accessibility
+[routeMap, parnuMap].forEach(m => {
+  m.on('click', () => m.scrollWheelZoom.enable());
+  m.on('mouseout', () => m.scrollWheelZoom.disable());
+});
+
+// Force tile reload after layout settles
+setTimeout(() => {
+  routeMap.invalidateSize();
+  parnuMap.invalidateSize();
+}, 600);
+</script>
+
+</body>
+</html>
